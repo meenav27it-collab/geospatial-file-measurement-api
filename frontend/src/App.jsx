@@ -10,7 +10,7 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [dragActive, setDragActive] = useState(false);
 
-  const API_BASE_URL = 'http://127.0.0.1:8000';
+  const API_BASE_URL = window.location.origin;
 
   const handleDrag = useCallback((e) => {
     e.preventDefault();

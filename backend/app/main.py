@@ -43,6 +43,10 @@ UPLOAD_DIR.mkdir(exist_ok=True)
 
 # Serve static files (frontend)
 FRONTEND_DIR = Path("../frontend/dist")
+if not FRONTEND_DIR.exists():
+    # Try absolute path for Render deployment
+    FRONTEND_DIR = Path(__file__).parent.parent.parent / "frontend" / "dist"
+
 if FRONTEND_DIR.exists():
     if (FRONTEND_DIR / "static").exists():
         app.mount("/static", StaticFiles(directory=str(FRONTEND_DIR / "static")), name="static")
